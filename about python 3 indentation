@@ -56,4 +56,5 @@ outsid if
 
 **********************
 2.  spaces are preffered method of indentation 
+3. indentation combination should be consistent within scope but combination may differ across multiple scopes.
    
