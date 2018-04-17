@@ -19,5 +19,8 @@
                             
   Things to keep in mind :
   
-  instead of conventional way of using  curly braces to create scopes, python does it by colon symbol ':' and appropriate indentation (tabs generally)
+  instead of conventional way of using  curly braces to create scopes, python does it by colon symbol ':' 
+  and appropriate indentation (tabs generally).
+  
+ 
   
