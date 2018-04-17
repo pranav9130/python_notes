@@ -1,0 +1,59 @@
+
+Is Python a dying language? A friend of my grandmother’s is a computer scientist from MIT. He told me that I should not learn Python because i...
+
+!!disclaimer :: following documentation only applies to python 3.x, python 2.x may follow different rules
+!!intresting reads : https://www.python.org/dev/peps/pep-0008/#tabs-or-spaces
+!!spaces are preffered for indentation
+
+Python uses indentation created using spaces or tabs to define scope of the construct/lines grouped together
+as mentioned one can use space or tab to provide this indentation
+
+but following things should be kept in mind
+
+1. keep indentation of scope consistent :
+     all the lines within scope / construct should be indented in same way. Indentation can be combination of spaces and tabs, but this 
+     combination should be consistent across the scope definition
+     otherwise one may encounter following error 'TabError: inconsistent use of tabs and spaces in indentation'
+                                                  'IndentationError: unindent does not match any outer indentation level'
+     note : the indentation combination may only use space /tabs for indentation.
+     !! just keep in mind keep your indentation consistent within the scope !!
+     !!but indentation combination may differ across the multiple scopes !!
+     
+eg :
+program : 
+
+value  = 1
+
+if value :                                  #this scopeis incorrect
+  print(value, " baitch!!") # tab
+    print('outsid if') # 4 spaces 
+else :                                        #this scope is correct
+	  print('nope') # tab + 2 spaces  
+	  print('npoe') # tab + 2 spaces 
+output : 
+C:\ProgramData\Anaconda3>python tobedeleted/test.py
+  File "tobedeleted/test.py", line 6
+    print('outsid if')
+                     ^
+TabError: inconsistent use of tabs and spaces in indentation
+end EG
+
+eg : 
+
+value  = 1
+
+if value : #correct scope
+  	print(value, " baitch!!") #one tab + two spaces 
+  	print('outsid if') #one tab + two spaces 
+else : #correct scope
+	  print('nope')  #four spaces
+	  print('npoe')  #four spaces
+
+program output: 
+C:\ProgramData\Anaconda3>python tobedeleted/test.py
+1  baitch!!
+outsid if
+
+**********************
+2.  spaces are preffered method of indentation 
+   
