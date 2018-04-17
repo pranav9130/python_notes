@@ -204,3 +204,142 @@ pos_index: 0 1 2
 string : " h e y "
 neg_index:-3-2-1
 
+--
+python strings also support slice operation
+
+About slice operations on string : Take a slice/part of string. i.e. to obtain substring from original string.
+
+syntax : string_varable[ start_index = 0 : end_index = string_length ]
+#!Note : the character at start index is included while character at end_index is always excluded
+#This is done to make sure that :-  variable[  : i ] + variable[ i :  ] == variable
+eg : 
+>>> string_literal = 'complex'
+>>> string_literal[ 1 : 2 ] #normal use 
+'o'
+>>> string_literal[ 1 : 5 ] #normal use
+'ompl'
+>>> string_literal[ 2 : 5 ] #normal use
+'mpl'
+>>> string_literal[ 2 :  ] #with no end_index, end_index, assumed as length of string : len(str)
+'mplex'
+>>> string_literal[  : 2 ] #with no start index, assumed as 0
+'co'
+>>> string_literal[ -1 : -3 ] #negative indexing is also supported, but the start_index < end_index otherwise empty string will be returned
+''
+>>> string_literal[ -3 : -1 ] #same as above case
+'le'
+>>> string_literal[  : 10  ] #handles out of bound conditions gracefully !!!
+'complex'
+>>> string_literal[ -1 : -11 ] #negative indexing is also allowed 
+''
+>>> string_literal[ -11 :  ] #handles out of bound conditions 
+'complex'
+>>> string_literal[ -11 : 1 ] #here start_index < end_index, sure to return part of string
+'c'
+>>>
+end EG:
+
+Assumptions and facts based on exmaples conclusions
+
+Fact : slicign will return empty string if start_index >= end_index, otherwise something will be returned, when at least one of them 
+       is within bound
+Fact : Out of bound condition doesnt genrate erro and handled gracefully
+
+Assumptions :
+    About working :
+    1. Out of bound indexes are fixed
+    2. string will be parsed from left to right only for slicing, thats why start_index >= end_index will return empty string
+    
+!!Note : as strings are immuatable new strings should be generated and assigned accordingly
+
+Some links : 
+formatted string expressions / templates : https://docs.python.org/3/reference/lexical_analysis.html#f-strings
+string methods : https://docs.python.org/3/library/stdtypes.html#string-methods
+****************************************
+3. Compound data types : 
+
+3.1 lists : array like ds that can hold items of same or diffrenet types;
+
+lists are mutables, i.e. items of the lists can be replaced but item itself can or can not be modified.
+eg : list_var = [ 1, 2, "Pranav" ]
+
+lists can be indexed and sliced (negative values allowed )
+
+>>> list_var = [ 1, 2, "Pranav" ]
+>>> list_var[-3]
+1
+>>> list_var[-3 : ]
+[1, 2, 'Pranav']
+>>> list_var[-1 : ]
+['Pranav']
+>>> list_var[-1 : -2]
+[]
+>>>
+end EG
+
+list of string slicing also applies to list slicing 
+lists support CONCATIONATION 
+
+eg : 
+>>> list_var + list_var
+[1, 2, 'Pranav', 1, 2, 'Pranav']
+>>> list_var
+[1, 2, 'Pranav']
+>>>
+end eg:
+
+append method can be used to append the item at the end of the list, item can be of any type
+
+eg : 
+>>> list_var = [1, 2, 3]
+>>> list_var.append([1, 2])
+>>> list_var
+[1, 2, 3, [1, 2]]
+>>>
+end EG
+
+---
+slicing can be used in very intresting way to modify / manipulate lists 
+
+>>> list_var
+[1, 2, 3, [1, 2]]
+>>> list_var[ 3 ] = 4 #replacing item of list
+>>> list_var
+[1, 2, 3, 4]
+>>> list_var [ 1 : 3 ] = [ 3, 2 ] #replacing/modifying multiple items of list
+>>> list_var
+[1, 3, 2, 4]
+>>> list_var[ 1 : 3 ] = [] #removing multiple items of list
+>>> list_var
+[1, 4]
+>>> list_var [ 1 : ] = [ 2, 3 ] + list_var[ 1 : ] #inserting new items into list
+>>> list_var
+[1, 2, 3, 4]
+>>>
+>>> list_var [ : ] = [] #clearing list
+>>> list_var
+[]
+end EG;
+  
+inbuild function len( variable ) can be used for obtaining lenght of list/string
+
+eg : 
+>>> list_var = [0, 1, 2, 3]
+>>> len(list_var)
+4
+>>>
+end EG
+
+!! --- I dont know where to mention it -- !!
+
+python allows multui variable definition
+
+so instead of 
+a = 0
+b = 1
+
+One can write 
+a, b = 0, 1;
+Since ** has higher precedence than -, -3**2 will be interpreted as -(3**2) and thus result in -9. To avoid this and get 9, you can use (-3)**2.
+
+  
