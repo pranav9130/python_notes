@@ -1,0 +1,206 @@
+3. Informal Intro to python : https://docs.python.org/3/tutorial/introduction.html#id4
+
+Data Types :
+
+1. Number types :   
+    int 
+    float
+    Decimal
+    Fractions
+    
+1.1 : operators associated with numerical types :
+
+For general arthimatic operators ( +, -, *, / ) : when encountered with mixed numerical data types 5eturned result will always focus on precise answer 
+(like operand 1 : int, operand 2 : float, result : float ). 
+
+Two new operands i didn't knew about : 
+
+// : floored division eg : (3 // 2 = 1), normal divison (3 / 2 = 1.5)
+** : to the power eg : (3 ** 2 == 9, 3 ** 3 == 27)
+
+!Note : python interpreter always store last printed result/expression into variable '_'. 
+        This variable should be used as read only variable. If one tries to write itr manually, 
+        that will generate local variables masking the actual '_', and making its magic disappear.
+        one of petty use case of '_' : carrying on calculation with previous result.
+ 
+ 2.Strings :
+ 
+ Ofcourse it supports strings. Ofcourse strings are IMMUTABLE!!
+ srings can be enclosed in single quotes('') or double quotes(""). Therse is no difference,
+ 
+ just keep this in mind :  
+ Unlike other languages, special characters such as \n have the same meaning with both single ('...') and double ("...") quotes. 
+ The only difference between the two is that within single quotes you don’t need to escape " (but you have to escape \') and vice versa.
+
+results on interpreter when strings being echoed :
+
+>>> "hey"
+'hey'
+>>> 'hey'
+'hey'
+>>> "hey isn't"
+"hey isn't"
+>>> 'hey isn\'t'
+"hey isn't"
+>>> 'hey "'
+'hey "'
+>>> 'hey " isn\'t'  # intresting result escaping is not working 
+'hey " isn\'t'
+>>> 'hey " isn't' #but also not allowing such string without escaping
+  File "<stdin>", line 1
+    'hey " isn't'
+               ^
+SyntaxError: invalid syntax
+
+Please notice on quotes within results they are changing according to input
+but instead of relying on interpreter echoing if print function is used the outer quotes of strings are removed and 
+they are formatted according to escape and special characters accordingly.
+
+when used with print results are different
+>>> 'hey " isn\'t'
+'hey " isn\'t'
+>>> print('hey " isn\'t')
+hey " isn't
+>>> 'hey " isn\'\nt'
+'hey " isn\'\nt'
+>>> print('hey " isn\'\nt')
+hey " isn'
+t
+>>>
+
+If user does not want characters prefixed by '\' as special characters they can be printed as raw strings 
+one can convey to print string as raw string by prefixing string literal by character 'r'
+
+Example of raw string printing
+
+>>> print('D:\name')
+D:
+ame
+>>> print(r'D:\name')
+D:\name
+
+!Note : this raw string printing can not be done with string variables, only with literals as shown in example
+--------------------
+Multi-line strings : one can define string spanning multiple lines by using triple single/double quotes syntax.
+syntax : ''' [ multi-line-string ] ''' | """ [ multi-line-string ] """
+
+eg :
+
+>>> string_literal = '''
+... hey
+... thats
+... pretty
+... good
+... '''
+>>> string_literal
+'\nhey\nthats\npretty\ngood\n'  #raw string printing by interpreter 
+>>> print(string_literal) #formatted string printing by print function
+                          #notice that new lines added while generating string are also added in string literal value
+hey
+thats
+pretty
+good
+
+>>>
+
+
+If user does notwant to insert new line into string line for new-line inserted during string definition, user can use '\'
+to remove inserted new-line
+
+eg : 
+>>> string_literal = """\
+... hey \
+... thats \
+... pretty \
+... good \
+... """
+>>> string_literal
+'hey thats pretty good '
+>>> print(string_literal)
+hey thats pretty good
+
+--
+strings can b concatinated using '+' # obvio
+but one can '*' to repeat string by given number #wow new 
+
+eg : 
+>>> string_literal = "hey "
+>>> string_literal + string_literal
+'hey hey '
+>>> string_literal * 2
+'hey hey '
+>>> string_literal * 3
+'hey hey hey '
+>>> string_literal * 3 + " good"
+'hey hey hey  good'
+>>>
+end EG
+
+--
+two strings seperated by some or no space are auto concatinated in intepreter ( !check : to be checked for scripts )
+
+eg ; 
+>>> "py" "thon"
+'python'
+>>> "py"   "thon"
+'python'
+>>> "py""thon"
+'python'
+end EG
+
+eg showing its potential use 
+>>> string_literal = ("hey"
+...                   " tahts"
+...                     " pretty"
+...                     " good")
+>>> string_literal
+'hey tahts pretty good'
+>>>
+end EG
+!!note : such concatination only works with string literals though, not with variables or expressions:
+---
+
+Strings can be indexed to get value of character at that index. But python does not have any seperate type for single character.
+eg :
+>>> string_literal
+'hey tahts pretty good'
+>>> string_literal[1]
+'e'
+>>> type(string_literal[1])
+<class 'str'>
+>>> type(string_literal) == type(string_literal[1])
+True
+>>>
+end EG
+---
+new thing : 
+in python strings can be indexed with negative values to acces it in reverse 
+
+eg :
+>>> string_literal
+'hey'
+>>> string_literal[2]
+'y'
+>>> string_literal[-1]
+'y'
+>>> string_literal[-3]
+'h'
+>>> string_literal[-4]
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+IndexError: string index out of range
+>>> string_literal[3]
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+IndexError: string index out of range
+>>>
+end EG
+
+notice that cyclic indexing is nto supported in python, so there is chance of "index out of range error" 
+for positive and negative string indexing
+
+indexes of sample string
+pos_index: 0 1 2
+string : " h e y "
+neg_index:-3-2-1
+
