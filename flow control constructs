@@ -1,0 +1,23 @@
+!!Before i begin
+!!things to keep in mind
+!!python do not have switch case construct but there are work arounds mentioned in below document
+!!good read about absence of switch case construct in python https://www.pydanny.com/why-doesnt-python-have-switch-case.html
+
+
+1. if constucts :
+
+  expr : [(] expression_body [)] #eg ( 2 + 3 == 5 )
+  actual syntax  : if  expr:
+                    **body of if**
+                   [elif expr : 
+                      **body** ]*
+                   [else : 
+                      **body** ]?
+                      
+                      #here  ? : zero or one time
+                            * : zero or more times
+                            
+  Things to keep in mind :
+  
+  instead of conventional way of using  curly braces to create scopes, python does it by colon symbol ':' and appropriate indentation (tabs generally)
+  
